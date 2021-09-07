@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+import ReactStars from "react-rating-stars-component";
 
 
 const Product = ({product}) => {
@@ -14,9 +15,17 @@ const Product = ({product}) => {
                 <Card.Title as='div'> <strong>{product.name }</strong> </Card.Title>
             </Link>
                 <Card.Text as='div'>
-                    <div className='my-3'>
-                        {product.rating} from {product.numReviews} reviwes
-                    </div>
+                   <ReactStars
+                
+                isHalf={true}
+              size= '20'
+              edit={false}
+                value={product.rating}
+                
+              />
+              <span>{`${product.numReviews} reviews`}</span>
+              
+                    
                 
             </Card.Text>
             <Card.Text as='h3'>
