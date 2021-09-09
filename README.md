@@ -11,6 +11,9 @@ JWT_SECRET=abc1234
 
 
 
+
+
+
 kör: npm install 
      npm start
 
