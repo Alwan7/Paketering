@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap'
 import products from '../products'
 
 import ReactStars from "react-rating-stars-component";
 
-const ProductPage = ({ match }) => {
+const ProductPage = ({history, match }) => {
   const product = products.find(p => p._id === match.params.id)
+  const [size, setSize] = useState(0)
+  
+  const addToCart = (el) => {
+    history.push(`/cart/${match.params.id}?size=${size}`)
+    
+  }
  
   return (
     <>
@@ -57,6 +63,25 @@ const ProductPage = ({ match }) => {
                 </Row>
 
               </ListGroupItem>
+              
+              <ListGroup.Item>
+                      <Row>
+                        <Col>Size</Col>
+                        <Col>
+                          <Form.Control
+                            as='select'
+                            value={size}
+                            onChange={(e) => setSize(e.target.value)}
+                          >
+                      {product.size.map(size => (
+                              <option>
+                               {size}
+                              </option>
+                            ))}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
               <ListGroupItem>
                 <Row>
                   <Col>
@@ -68,7 +93,7 @@ const ProductPage = ({ match }) => {
                 </Row>
               </ListGroupItem>
               <ListGroupItem>
-                <Button className='btn-block' type='button' disabled={product.countInStock ===0}> Add to cart</Button>
+                <Button onClick={addToCart} className='btn-block' type='button' disabled={product.countInStock ===0}> Add to cart</Button>
               </ListGroupItem>
 
             </ListGroup>

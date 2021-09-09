@@ -4,8 +4,10 @@ import Footer from './component/Footer';
 import HomePage from './pages/HomePage.jsx'
 import Header from "./component/Header"
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 
 function App() {
+  
   return (
     <Router>
     <Header />
@@ -13,9 +15,10 @@ function App() {
         <Container>
 
           < Route path='/' exact component={HomePage}/>
-          < Route path='/product/:id'  component={ProductPage}/>
+          < Route path='/product/:id' component={ProductPage} />
+          <Route path='/cart/:id?' component={CartPage} />
         </Container>
-     
+        
       </main>
       <Footer />
     </Router>

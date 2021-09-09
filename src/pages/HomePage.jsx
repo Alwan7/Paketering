@@ -7,6 +7,7 @@ import {Row, Col} from 'react-bootstrap'
 const HomePage = () => {
   return (
     <>
+      <h2></h2>
       <h1>Latest Products</h1>
       <Row>
         {products.map(product => (
