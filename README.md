@@ -2,8 +2,12 @@
 OnlineShop
 
 Klona repot, skapa en ny fil i webbshop mappen som heter ".env"
-I .env filen klistra in: DATABASE='mongodb+srv://Username:Username@cluster0.euayj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+I .env filen klistra in:
+DATABASE='mongodb+srv://Username:Username@cluster0.euayj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 PORT=8000
+JWT_SECRET=abc1234
+
+
 
 kör: npm install 
      npm start
