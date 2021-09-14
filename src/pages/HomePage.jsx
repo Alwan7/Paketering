@@ -1,23 +1,34 @@
 
-import products from '../products'
+import ShopContext from "../context/shop-context";
 import Product from '../component/Product'
 import {Row, Col} from 'react-bootstrap'
+import NewsletterPopup from '../component/global/NewsletterPopup'
+import Header from "../component/Header";
 
 
-const HomePage = () => {
+const HomePage = props => {
   return (
-    <>
-      <h2></h2>
-      <h1>Latest Products</h1>
+    <ShopContext.Consumer>
+      {context => (
+        <>
+          < Header
+            cartItemNumber={context.cart.reduce((count, curItem) => {
+              return count + curItem.quantity;
+            }, 0)}
+          />
       <Row>
-        {products.map(product => (
+        {context.products.map(product => (
           <Col sm={12} md={6} lg={4} xl={3}>
             < Product product = {product} />
           
           </Col>
+          
         ))}
-      </Row>
-      </>
+        <NewsletterPopup />
+          </Row>
+          </>
+      )}
+      </ShopContext.Consumer>
   )
 }
 export default HomePage
