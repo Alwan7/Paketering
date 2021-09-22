@@ -1,6 +1,8 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Route } from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
+import SearchBox from './SearchBox'
 
 
 const Header = props => {
@@ -15,6 +17,7 @@ const Header = props => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            
             <Nav className="ms-auto">
               <LinkContainer to='/cart'>
                 <Nav.Link ><i className= 'fas fa-shopping-cart p-3' > ({props.cartItemNumber}) </i>Cart</Nav.Link>

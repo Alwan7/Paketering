@@ -1,0 +1,19 @@
+[{
+        "id": 1,
+        "img": "/images/slider/slide-1.jpg",
+        "title": "Great Lookbook 2021",
+        "text": "Stylish shop"
+    },
+    {
+        "id": 2,
+        "img": "/images/slider/slide-1.jpg",
+        "title": "Stylish Coat",
+        "text": "Stylish shop"
+    },
+    {
+        "id": 3,
+        "img": "/images/slider/slide-1.jpg",
+        "title": "Trendy Collection",
+        "text": "Stylish shop"
+    }
+]

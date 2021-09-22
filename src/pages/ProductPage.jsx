@@ -11,9 +11,6 @@ const ProductPage = ({ history, match, }) => {
   const context = useContext(ShopContext);
   const product = context.products.find(p => p.id === match.params.id)
   
-  const [size, setSize] = useState(0)
-  
-  
   return(
     <ShopContext.Consumer>
       {context => (

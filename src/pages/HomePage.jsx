@@ -5,8 +5,10 @@ import {Row, Col} from 'react-bootstrap'
 import NewsletterPopup from '../component/global/NewsletterPopup'
 import Header from "../component/Header";
 
+import ProductCarousel from "../component/ProductCarousel";
 
-const HomePage = props => {
+
+const HomePage = product => {
   return (
     <ShopContext.Consumer>
       {context => (
@@ -16,16 +18,22 @@ const HomePage = props => {
               return count + curItem.quantity;
             }, 0)}
           />
-      <Row>
-        {context.products.map(product => (
+        <ProductCarousel />
+          
+          <Row>
+            
+            {context.products.map(product => (
+          
           <Col sm={12} md={6} lg={4} xl={3}>
             < Product product = {product} />
           
           </Col>
           
         ))}
+        
         <NewsletterPopup />
           </Row>
+          
           </>
       )}
       </ShopContext.Consumer>

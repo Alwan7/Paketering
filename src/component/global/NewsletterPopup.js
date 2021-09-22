@@ -31,10 +31,9 @@ function NewsletterPopup() {
             <section className={"newsletter-popup-area-section " + (showNewsletter ? 'active-newsletter-popup' : '')}>
                 <div className="newsletter-popup-area">
                     <div className="newsletter-popup-ineer">
-                        <button onClick={HandelNewsletterClose} className="btn newsletter-close-btn"><i
-                            className="pe-7s-close-circle"/></button>
+                        <button onClick={HandelNewsletterClose} className="btn newsletter-close-btn"><i class="far fa-times-circle"></i></button>
                         <div className="img-holder">
-                            <img src={process.env.PUBLIC_URL + "/assets/images/newsletter.jpg"} loading="lazy" alt=""/>
+                            <img src={process.env.PUBLIC_URL + "/images/newsletter.jpeg"} loading="lazy" alt=""/>
                         </div>
                         <div className="details">
                             <h4>Get 25% discount shipped to your inbox</h4>

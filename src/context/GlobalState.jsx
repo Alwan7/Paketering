@@ -16,6 +16,7 @@ const GlobalState = props => {
         rating: 4.5,
         numReviews: 12,
         size: [41, 42, 43, 44, 45, 46],
+        
 
     },
     {

@@ -41,7 +41,7 @@ const CartPage = props => {
                   <Col md={2}>
                     <Form.Control
                             as='select'
-                            value={size}
+                            value={size.id}
                             onChange={(e) => setSize(e.target.value)}
                           >
                       {cartItem.size.map(size => (
