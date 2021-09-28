@@ -37,6 +37,16 @@ const Menu = ({ history }) => (
             <li className="nav-item">
                 <Link
                     className="nav-link"
+                    style={isActive(history, "/WishList")}
+                    to="/WishList"
+                >
+                    Wishlist
+                </Link>
+            </li>
+
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
                     style={isActive(history, "/cart")}
                     to="/cart"
                 >

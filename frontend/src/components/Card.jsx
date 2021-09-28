@@ -8,6 +8,7 @@ const Card = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
+  showAddToWishListButton = true,
   cartUpdate = false,
   showRemoveProductButton = false,
   setRun = f => f,
@@ -26,6 +27,7 @@ const Card = ({
       )
     );
   };
+
   const addToCart = () => {
     // console.log('added');
     addItem(product, setRedirect(true));
@@ -46,6 +48,39 @@ const Card = ({
       )
     );
   };
+
+
+
+
+
+  const addToWishList = () => {
+    // console.log('added');
+    addItem(product, setRedirect(true));
+  };
+
+  const Redirect = redirectToWishList => {
+    if (redirectToWishList) {
+      return <Redirect to="/wishlist" />;
+    }
+  };
+
+  const showAddToWishListBtn = showAddToWishListButton => {
+    return (
+      showAddToWishListButton && (
+        <button onClick={addToWishList} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
+          Add to Wishlist
+        </button>
+      )
+    );
+  };
+
+
+
+
+
+
+
+
 
   const showStock = quantity => {
     return quantity > 0 ? (
@@ -108,6 +143,8 @@ const Card = ({
         {showViewButton(showViewProductButton)}
 
         {showAddToCartBtn(showAddToCartButton)}
+
+        {showAddToWishListBtn(showAddToWishListButton)}
 
         {showRemoveButton(showRemoveProductButton)}
 
