@@ -26,6 +26,7 @@ const Cart = () => {
                         showAddToWishListButton={false}
                         cartUpdate={true}
                         showRemoveProductButton={true}
+                        showRemoveProductButtonWishList={false}
                         setRun={setRun}
                         run={run}
                     />

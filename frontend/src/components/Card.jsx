@@ -3,19 +3,23 @@ import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
 import moment from 'moment';
 import { addItem, updateItem, removeItem } from './cartHelpers';
+import { addItemWishList, removeItemWishList } from './wishListHelpers';
 
 const Card = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
   showAddToWishListButton = true,
+
   cartUpdate = false,
   showRemoveProductButton = false,
+  showRemoveProductButtonWishList = false,
   setRun = f => f,
   run = undefined
   // changeCartSize
 }) => {
   const [redirect, setRedirect] = useState(false);
+  const [redirectToWishList, setRedirectWishList] = useState(false);
   const [count, setCount] = useState(product.count);
 
   const showViewButton = showViewProductButton => {
@@ -49,37 +53,27 @@ const Card = ({
     );
   };
 
-
-
-
-
   const addToWishList = () => {
     // console.log('added');
-    addItem(product, setRedirect(true));
+    addItemWishList(product, setRedirectWishList(true));
   };
 
-  const Redirect = redirectToWishList => {
+  const shouldRedirectWishList = redirectToWishList => {
     if (redirectToWishList) {
       return <Redirect to="/wishlist" />;
     }
   };
 
+
   const showAddToWishListBtn = showAddToWishListButton => {
     return (
       showAddToWishListButton && (
-        <button onClick={addToWishList} className="btn btn-outline-warning mt-2 mb-2 card-btn-1  ">
+        <button onClick={addToWishList} className="btn btn-outline-warning mt-2 mb-2 card-btn-2  ">
           Add to Wishlist
         </button>
       )
     );
   };
-
-
-
-
-
-
-
 
 
   const showStock = quantity => {
@@ -112,6 +106,7 @@ const Card = ({
       )
     );
   };
+
   const showRemoveButton = showRemoveProductButton => {
     return (
       showRemoveProductButton && (
@@ -127,11 +122,29 @@ const Card = ({
       )
     );
   };
+
+  const showRemoveButtonWishList = showRemoveProductButtonWishList => {
+    return (
+      showRemoveProductButtonWishList && (
+        <button
+          onClick={() => {
+            removeItemWishList(product._id);
+            setRun(!run); // run useEffect in parent Cart
+          }}
+          className="btn btn-outline-danger mt-2 mb-2"
+        >
+          Remove Product
+        </button>
+      )
+    );
+  };
+
   return (
     <div className="card ">
       <div className="card-header card-header-1 ">{product.name}</div>
       <div className="card-body">
         {shouldRedirect(redirect)}
+        {shouldRedirectWishList(redirectToWishList)}
         <ShowImage item={product} url="product" />
         <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
         <p className="card-p black-10">$ {product.price}</p>
@@ -147,6 +160,8 @@ const Card = ({
         {showAddToWishListBtn(showAddToWishListButton)}
 
         {showRemoveButton(showRemoveProductButton)}
+
+        {showRemoveButtonWishList(showRemoveProductButtonWishList)}
 
         {showCartUpdateOptions(cartUpdate)}
       </div>

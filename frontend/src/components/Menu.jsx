@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from '../components/auth';
 import { itemTotal } from "./cartHelpers";
+import { wishlistTotal } from "./wishListHelpers";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -40,7 +41,10 @@ const Menu = ({ history }) => (
                     style={isActive(history, "/WishList")}
                     to="/WishList"
                 >
-                    Wishlist
+                    Wishlist{" "}
+                    <sup>
+                        <small className="cart-badge">{wishlistTotal()}</small>
+                    </sup>
                 </Link>
             </li>
 
